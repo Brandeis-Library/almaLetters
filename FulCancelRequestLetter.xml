@@ -26,13 +26,17 @@
 				<xsl:attribute name="style">
 				<xsl:call-template name="bodyStyleCss" /> <!-- style.xsl -->
 			</xsl:attribute>
-				<xsl:call-template name="head" /> <!-- header.xsl -->
+				<xsl:call-template name="headCancelLetter" /> <!-- header.xsl -->
 				<xsl:call-template name="senderReceiver" /> <!-- SenderReceiver.xsl -->
 				<xsl:call-template name="toWhomIsConcerned" /> <!-- mailReason.xsl -->
 
 				<div class="messageArea">
 					<div class="messageBody">
 						<table role='presentation'  cellspacing="0" cellpadding="5" border="0">
+                          <xsl:if test="notification_data/request/status_note_display = 'The resource sharing request was cancelled because the resource was found in your institution. A local request was created instead'">
+                            <tr><td>Your interlibrary loan request has been found at our institution.  If your request was for a physical item, you'll receive another email when your item is ready to be picked up at the library.  If your request was for scanned material, you will receive an email with a link to your requested content when we've finished scanning it for you.</td></tr>
+                           </xsl:if>
+                           <xsl:if test="notification_data/request/status_note_display != 'The resource sharing request was cancelled because the resource was found in your institution. A local request was created instead'">
 							<tr>
 								<td>
 									@@on@@
@@ -303,6 +307,7 @@
 									</td>
 								</tr>
 							</xsl:if>
+                        </xsl:if>
 						</table>
 						<br />
 						<table role='presentation' >
