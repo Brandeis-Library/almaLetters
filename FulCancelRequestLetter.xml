@@ -26,7 +26,12 @@
 				<xsl:attribute name="style">
 				<xsl:call-template name="bodyStyleCss" /> <!-- style.xsl -->
 			</xsl:attribute>
-				<xsl:call-template name="headCancelLetter" /> <!-- header.xsl -->
+                                <xsl:if test="notification_data/request/status_note_display = 'The resource sharing request was cancelled because the resource was found in your institution. A local request was created instead'">
+				        <xsl:call-template name="headCancelLetter" /> <!-- header.xsl -->
+                               </xsl:if>
+                                <xsl:if test="notification_data/request/status_note_display != 'The resource sharing request was cancelled because the resource was found in your institution. A local request was created instead'">
+				        <xsl:call-template name="head" /> <!-- header.xsl -->
+                               </xsl:if>
 				<xsl:call-template name="senderReceiver" /> <!-- SenderReceiver.xsl -->
 				<xsl:call-template name="toWhomIsConcerned" /> <!-- mailReason.xsl -->
 
