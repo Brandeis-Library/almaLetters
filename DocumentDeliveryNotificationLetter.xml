@@ -52,7 +52,7 @@
                                 </td>
                             </tr>
 
-                            <xsl:if test="notification_data/download_url_cas != ''">
+                            <xsl:if test="notification_data/request/document_delivery_file_name != ''">
 
                                 <xsl:variable name="requestFileName" select="notification_data/download_url_cas" />
 
