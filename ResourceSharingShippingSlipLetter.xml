@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:variable name="counter" select="0"/>
+
+
+<xsl:include href="header.xsl" />
+<xsl:include href="senderReceiver.xsl" />
+<xsl:include href="mailReason.xsl" />
+<xsl:include href="footer.xsl" />
+<xsl:include href="style.xsl" />
+<xsl:include href="recordTitle.xsl" />
+
+<xsl:template name="id-info">
+   <xsl:param name="line"/>
+   <xsl:variable name="first" select="substring-before($line,'//')"/>
+   <xsl:variable name="rest" select="substring-after($line,'//')"/>
+    <xsl:if test="$first = '' and $rest = '' ">
+          <!--br/-->
+      </xsl:if>
+   <xsl:if test="$rest != ''">
+       <xsl:value-of select="$rest"/><br/>
+   </xsl:if>
+   <xsl:if test="$rest = ''">
+       <xsl:value-of select="$line"/><br/>
+   </xsl:if>
+
+</xsl:template>
+
+  <xsl:template name="id-info-hdr">
+        <xsl:call-template name="id-info">
+            <xsl:with-param name="line" select="notification_data/incoming_request/external_request_id"/>
+            <xsl:with-param name="label" select="'Bibliographic Information:'"/>
+         </xsl:call-template>
+</xsl:template>
+
+<xsl:template match="/">
+	<html>
+		<head>
+		<xsl:call-template name="generalStyle" />
+		</head>
+
+			<body>
+			<xsl:attribute name="style">
+				<xsl:call-template name="bodyStyleCss" /> <!-- style.xsl -->
+			</xsl:attribute>
+
+				<xsl:call-template name="head" /> <!-- header.xsl -->
+
+
+			<div class="messageArea">
+				<div class="messageBody">
+					 <table cellspacing="0" cellpadding="5" border="0">
+
+						<tr>
+							<td>
+								<b>@@supplied_to@@: </b>
+								<xsl:value-of select="notification_data/partner_name"/>
+							</td>
+						</tr>
+				     <tr>
+			                <td>
+			                  <b>@@borrower_reference@@: </b>
+			                   <xsl:call-template name="id-info-hdr"/>
+			                </td>
+			         </tr>
+
+
+					      <tr>
+								  <td><b>External ID: </b><img src="cid:externalId.png" alt="externalId" /></td>
+					      </tr>
+
+
+		               <br></br>
+			              <tr>
+			                <td>
+			                    <b>@@title@@: </b>
+     			                  <xsl:value-of select="notification_data/metadata/title"/>
+                                  &#160;
+                                <br></br>
+                                <b>@@author@@: </b>
+			                      <xsl:value-of select="notification_data/metadata/author"/>
+                                  &#160;
+                                <br></br>
+			                 </td>
+			            </tr>
+
+						<xsl:if  test="notification_data/item">
+							<br></br>
+
+							<tr>
+							  <td><b>@@item_barcode@@: </b><img src="cid:Barcode1.png" alt="Barcode1" /></td>
+							</tr>
+<br></br>
+							</xsl:if>
+
+
+
+					</table>
+				</div>
+			</div>
+
+
+
+
+	<xsl:call-template name="lastFooter" /> <!-- footer.xsl -->
+
+<xsl>
+<br></br>
+	<table cellspacing="0" cellpadding="0" border="1">
+                <tr><td style="font-size:18px;width:350px">Return To:<br></br>
+                        <center>Brandeis University Library </center>
+                        <center>Interlibrary Loan</center>
+                        <center>415 South Street, MS 045</center>
+                        <center>Waltham, MA 02453-2728</center><br></br>
+                </td></tr>
+                <tr><td style="font-size:18px;width:350px"><font size="1">Ship To:</font><br></br>
+                <xsl:for-each select="notification_data/partner_shipping_info_list/partner_shipping_info">
+			<center><b><xsl:value-of select="address1"/></b></center>
+			<center><xsl:value-of select="address2"/></center>
+			<center><b><xsl:value-of select="address3"/></b></center>
+			<center><xsl:value-of select="city"/>&#160;<xsl:value-of select="state"/>&#160;<xsl:value-of select="postal_code"/></center>
+			<br></br>
+		</xsl:for-each>
+               	</td></tr>
+	</table>
+</xsl>
+
+
+
+</body>
+</html>
+
+
+	</xsl:template>
+</xsl:stylesheet>
