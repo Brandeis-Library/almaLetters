@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+
+<xsl:include href="header.xsl" />
+<xsl:include href="senderReceiver.xsl" />
+<xsl:include href="mailReason.xsl" />
+<xsl:include href="footer.xsl" />
+<xsl:include href="style.xsl" />
+<xsl:include href="recordTitle.xsl" />
+
+<xsl:template match="/">
+<html>
+   <head>
+      <xsl:call-template name="generalStyle" />
+      <style>
+         table  {
+            font-size: 140%;
+            color: black;
+         }
+      </style>
+   </head>
+
+   <body>
+      <xsl:attribute name="style">
+         <xsl:call-template name="bodyStyleCss" /> <!-- style.xsl -->
+      </xsl:attribute>
+
+      <xsl:call-template name="head" /> <!-- header.xsl -->
+      <xsl:call-template name="senderReceiver" /> <!-- SenderReceiver.xsl -->
+
+      <xsl:call-template name="toWhomIsConcerned" /> <!-- mailReason.xsl -->
+
+      <div class="messageArea">
+      <div class="messageBody">
+      <table cellspacing="0" cellpadding="5" border="0">
+         <tr>
+             <td>@@following_item_requested_on@@ <xsl:value-of select="notification_data/request/create_date"/>, is ready for pick up.</td>
+         </tr>
+
+         <tr>
+             <td><xsl:call-template name="recordTitle" /> <!-- recordTitle.xsl --></td>
+         </tr>
+
+         <xsl:if test="notification_data/request/work_flow_entity/expiration_date">
+                  <tr><td> @@note_item_held_until@@ <xsl:value-of select="notification_data/request/work_flow_entity/expiration_date"/></td></tr>
+         </xsl:if>
+
+         <tr>
+            <td><strong>For Main Library Pick Up:</strong></td>
+         </tr>
+       
+         <tr>
+            <td>Visit the Information and Borrowing Desk during <a href="https://www.brandeis.edu/library/about/hours/index.html">our operating hours</a> to pickup your items.</td>
+         </tr>
+
+        <tr>
+   <td><strong>For Contactless Pick Up Lockers:</strong></td>
+        </tr>
+
+        <tr>
+            <td>You will receive a second email from LuxerOne with the access code for your pick up. Once you have your access code, visit the Contactless Pick Up Lockers on level 2 of the Usdan Student Center (Near DCL) and enter your access code to pick up your items. Items will be held in the lockers for 72 hours. After 72 hours, the items can be picked up from the hold shelf at the Information and Borrowing Desk in the Goldfarb Library. If you did not receive the LuxerOne email, please contact us at  <a href="mailto:borrowing@brandeis.edu">borrowing@brandeis.edu</a> .</td>
+
+        </tr>
+
+        <tr>
+            <td>If you no longer need this item or have any questions please email <a href="mailto:borrowing@brandeis.edu">borrowing@brandeis.edu</a> or respond to this email.</td>
+        </tr>
+
+          <xsl:if test="notification_data/request/system_notes">
+             <tr>
+                 <td></td>
+             </tr>
+
+             <tr>
+                 <td><xsl:value-of select="notification_data/request/system_notes"/></td>
+             </tr>
+
+          </xsl:if>
+          
+      </table>
+      </div>
+      </div>
+
+      <br />
+
+      <table>
+          <tr><td>@@sincerely@@</td></tr>
+          <tr><td>@@department@@</td></tr>
+      </table>
+
+      <xsl:call-template name="lastFooter" /> <!-- footer.xsl -->
+   </body>
+</html>
+</xsl:template>
+</xsl:stylesheet>
