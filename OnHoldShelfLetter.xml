@@ -53,11 +53,13 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
        
          <tr>
             <td>Visit the Information and Borrowing Desk during <a href="https://www.brandeis.edu/library/about/hours/index.html">our operating hours</a> to pickup your items.</td>
-            <xsl:if test="calculated_destination_name = 'Main Library - Reading Room'">
-                <td>Please note that your item is for <strong>in library use only</strong> and cannot leave the library.</td>
-            </xsl:if>
+ 
          </tr>
-
+       <xsl:if test="notification_data/request/calculated_destination_name = 'Main Library - Reading Room'">
+        <tr>         
+                <td>Please note that your item is for <strong>in library use only</strong> and cannot leave the library.</td>          
+         </tr>
+        </xsl:if>
         <tr>
    <td><strong>For Contactless Pick Up Lockers:</strong></td>
         </tr>
