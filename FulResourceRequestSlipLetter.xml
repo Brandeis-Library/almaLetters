@@ -202,6 +202,13 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 						<tr>
 							<td><h3><strong>@@move_to_library@@: </strong><xsl:value-of select="notification_data/destination"/></h3></td>
 						</tr>
+						
+											
+						<xsl:if test="notification_data/incoming_request/library_id = 12900830000231" >
+							<tr><td><strong>Local lending request:</strong>: Yes</td></tr>
+						</xsl:if>
+						
+							
 						<tr>
 							<td><strong>@@request_type@@: </strong><xsl:value-of select="notification_data/request_type"/></td>
 						</tr>
