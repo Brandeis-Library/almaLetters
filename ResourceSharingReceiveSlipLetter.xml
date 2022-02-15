@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+	<xsl:include href="header.xsl"/>
+	<xsl:include href="senderReceiver.xsl"/>
+	<xsl:include href="mailReason.xsl"/>
+	<xsl:include href="footer.xsl"/>
+	<xsl:include href="style.xsl"/>
+	<xsl:include href="recordTitle.xsl"/>
+	<xsl:template match="/">
+		<html>
+			<xsl:if test="notification_data/languages/string">
+				<xsl:attribute name="lang">
+					<xsl:value-of select="notification_data/languages/string"/>
+				</xsl:attribute>
+			</xsl:if>
+                
+			<head>
+				<title>
+					<xsl:value-of select="notification_data/general_data/subject"/>
+				</title>
+
+				<xsl:call-template name="generalStyle"/>
+			</head>
+			<body>
+				<xsl:attribute name="style">
+					<xsl:call-template name="bodyStyleCss"/>
+					<!-- style.xsl -->
+				</xsl:attribute>
+                               <xsl:call-template name="headReceiveLetter"/>
+
+				<div class="messageArea">
+					<div class="messageBody">
+						<table role='presentation'  cellspacing="0" cellpadding="5" border="0">
+							<xsl:attribute name="style">
+								<xsl:call-template name="listStyleCss"/>
+								<!-- style.xsl -->
+							</xsl:attribute>
+
+							<xsl:if test="notification_data/barcode !=''">
+								<tr>
+								  <td>
+								  	
+								  	<strong>@@item_barcode@@: </strong> <img src="cid:Barcode.png" alt="Barcode" />
+								  </td>
+								</tr>
+							</xsl:if>
+
+                                                        
+                                                         <tr>
+								<td>
+									
+									<strong> @@patron_name@@: </strong>
+									<xsl:value-of select="notification_data/patron_name"/>
+								</td>
+							</tr>
+
+                                                       	<tr>
+								<td>
+									
+									<strong> @@pickup_location@@: </strong>
+									<xsl:value-of select="notification_data/request/pickup_location_str"/>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									
+									<strong> @@title@@: </strong>
+									<xsl:value-of select="notification_data/request/display/normalized_title"/>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<strong> @@author@@: </strong>
+									<xsl:value-of select="notification_data/request/display/author"/>
+								</td>
+							</tr>
+                                                        <tr>
+								<td>
+									<strong> Due date: </strong>
+									<xsl:value-of select="notification_data/request/due_date"/>
+								</td>
+							</tr>
+
+			
+
+							<tr>
+								<td>
+									<strong> @@request_date@@: </strong>
+									<xsl:value-of select="notification_data/request/create_date_str"/>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<strong> @@arrival_date@@: </strong>
+									<xsl:value-of select="notification_data/request/item_arrival_date"/>
+								</td>
+							</tr>						
+	
+							<xsl:if test="notification_data/citation_id !=''">
+
+							<tr>
+								<td>
+
+									<strong> @@reading_list@@: </strong>
+									<xsl:value-of select="notification_data/reading_list_name" /> (<xsl:value-of select="notification_data/reading_list_code" />)
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<strong> @@citation_id@@: </strong>
+									<xsl:value-of select="notification_data/citation_id" />
+								</td>
+							</tr>
+							</xsl:if>
+                                                        
+						</table>
+
+
+
+						
+					</div>
+				</div>
+                               <div>
+                                        <xsl:attribute name="style">
+					   <xsl:call-template name="receiveLetterFooter"/>
+                                       </xsl:attribute>
+					<!-- style.xsl -->
+                                   
+                                   <span><strong>Address:</strong> Brandeis Library Interlibrary Loan, 415 South Street MS 045, Waltham MA 02453<br/>
+                                  <strong>Phone number: </strong> (781)-736-4676</span>
+                                </div>
+				<!-- footer.xsl -->
+			</body>
+		</html>
+	</xsl:template>
+</xsl:stylesheet>
