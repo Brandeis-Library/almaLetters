@@ -30,16 +30,22 @@
 
 				<div class="messageArea">
 					<div class="messageBody">
+                        
 						<table role='presentation'  cellspacing="0" cellpadding="5" border="0">
 							<xsl:attribute name="style">
 								<xsl:call-template name="listStyleCss"/>
 								<!-- style.xsl -->
 							</xsl:attribute>
+                        <xsl:attribute name="style">
+					        <xsl:call-template name="receiveLetterBody"/>
+                        </xsl:attribute>
 
 							<xsl:if test="notification_data/barcode !=''">
 								<tr>
 								  <td>
-								  	
+								  	<xsl:attribute name="style">
+                                                                               <xsl:call-template name="barcodeSmall"/>
+                                                                        </xsl:attribute>
 								  	<strong>@@item_barcode@@: </strong> <img src="cid:Barcode.png" alt="Barcode" />
 								  </td>
 								</tr>
@@ -66,13 +72,15 @@
 								<td>
 									
 									<strong> @@title@@: </strong>
-									<xsl:value-of select="notification_data/request/display/normalized_title"/>
+                                    <xsl:variable name="title" select="notification_data/request/display/normalized_title"/>
+                                    <xsl:value-of select="substring($title,0,100)"/>
 								</td>
 							</tr>
 							<tr>
 								<td>
 									<strong> @@author@@: </strong>
-									<xsl:value-of select="notification_data/request/display/author"/>
+                                    <xsl:variable name="author" select="notification_data/request/display/author"/>
+                                    <xsl:value-of select="substring($author,0,50)"/>
 								</td>
 							</tr>
                                                         <tr>
@@ -123,7 +131,7 @@
 				</div>
                                <div>
                                         <xsl:attribute name="style">
-					   <xsl:call-template name="receiveLetterFooter"/>
+					                        <xsl:call-template name="receiveLetterFooter"/>
                                        </xsl:attribute>
 					<!-- style.xsl -->
                                    
