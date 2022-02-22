@@ -67,6 +67,13 @@
 								</td>
 							</tr>
 						</xsl:when>
+                        <xsl:when test="notification_data/query_type = 'Type_6_query_name'">
+							<tr>
+								<td>
+									<h3>Interlibrary Loan Item Recalled</h3>
+								</td>
+							</tr>
+						</xsl:when>
 						<xsl:otherwise>
 							<tr>
 								<td>
@@ -439,6 +446,11 @@
 									</tr>
 									<tr>
 										<td>@@Type_5_query_line_2@@</td>
+									</tr>
+								</xsl:when>
+                               <xsl:when test="notification_data/query_type = 'Type_6_query_name'">
+									<tr>
+										<td>This interlibrary loan item has been recalled by the library that loaned it to us. The new due date is <xsl:value-of select="notification_data/request/due_date" />.  Please return it by this new due date.  Thank you!</td>
 									</tr>
 								</xsl:when>
 
