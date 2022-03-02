@@ -59,11 +59,21 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 						<tr>
 							<td><strong>@@request_id@@: </strong><img src="cid:request_id_barcode.png" alt="Request Barcode"/></td>
 						</tr>
-                                                 <xsl:if  test="notification_data/incoming_request/external_request_id != ''" >
+                                                 <xsl:if  test="notification_data/external_id != ''" >
+                                                <tr>
+							<td><strong>External Request ID: </strong><xsl:value-of select="notification_data/external_id "/></td>
+						</tr>
+                                               </xsl:if>
+                                                <xsl:if test="notification_data/request/resource_sharing_request_id != ''" >
+                                                <tr>
+							<td><strong>Internal Request ID: </strong><xsl:value-of select="notification_data/request/resource_sharing_request_id "/></td>
+						</tr>
+                                               </xsl:if>
+                                               <xsl:if test="notification_data/incoming_request/external_request_id != ''" >
                                                 <tr>
 							<td><strong>External Request ID: </strong><xsl:value-of select="notification_data/incoming_request/external_request_id "/></td>
 						</tr>
-                                               </xsl:if>
+                                               </xsl:if>                                    
                                                  <xsl:if  test="notification_data/request/pages != ''" >
                                                 <tr>
 							<td><strong>Pages: </strong><xsl:value-of select="notification_data/request/pages"/></td>
@@ -205,7 +215,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 						
 											
 						<xsl:if test="notification_data/incoming_request/library_id = 12900830000231" >
-							<tr><td><strong>Local lending request:</strong>: Yes</td></tr>
+							<tr><td><strong>Local request:</strong> Yes</td></tr>
 						</xsl:if>
 						
 							
