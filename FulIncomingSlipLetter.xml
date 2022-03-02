@@ -155,7 +155,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 									</tr>
 								</xsl:if>
 
-						<xsl:for-each select="notification_data/items/physical_item_display_for_printing">
+						<xsl:for-each select="notification_data/items/physical_item_display_for_printing[position()&lt;=1]" >
 							<br></br>
 
 							
