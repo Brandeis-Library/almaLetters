@@ -46,7 +46,7 @@
 								  	<xsl:attribute name="style">
                                                                                <xsl:call-template name="barcodeSmall"/>
                                                                         </xsl:attribute>
-								  	<strong>@@item_barcode@@: </strong> <img src="cid:Barcode.png" alt="Barcode" />
+								  	<strong>@@request_id@@: </strong> <img src="externalId.png" alt="externalId" />
 								  </td>
 								</tr>
 							</xsl:if>
