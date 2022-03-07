@@ -215,7 +215,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 						
 											
 						<xsl:if test="notification_data/incoming_request/library_id = 12900830000231" >
+                                                <xsl:if test="notification_data/incoming_request/partner_name='Brandeis University - Resource Sharing Library'" >
 							<tr><td><strong>Local request:</strong> Yes</td></tr>
+                                                </xsl:if>
 						</xsl:if>
 						
 							
