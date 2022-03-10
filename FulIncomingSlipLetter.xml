@@ -127,11 +127,11 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 							</tr>
 						</xsl:if>
 
-						<xsl:if  test="notification_data/metadata/pages != ''" >
+						<xsl:if  test="notification_data/metadata/publication_date != ''" >
 							<tr>
 								<td>
-									<b>Year: </b>
-									<xsl:value-of select="notification_data/metadata/year"/>
+									<b>Publication date: </b>
+									<xsl:value-of select="notification_data/metadata/publication_date"/>
 								</td>
 							</tr>
 						</xsl:if>
