@@ -118,6 +118,25 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 							</tr>
 						</xsl:if>
 
+						<xsl:if  test="notification_data/metadata/volume != ''" >
+							<tr>
+								<td>
+									<b>Volume: </b>
+									<xsl:value-of select="notification_data/metadata/volume"/>
+								</td>
+							</tr>
+						</xsl:if>
+
+						<xsl:if  test="notification_data/metadata/pages != ''" >
+							<tr>
+								<td>
+									<b>Year: </b>
+									<xsl:value-of select="notification_data/metadata/year"/>
+								</td>
+							</tr>
+						</xsl:if>
+
+
 						<xsl:if  test="notification_data/incoming_request/note" >
 							<tr>
 								<td>
