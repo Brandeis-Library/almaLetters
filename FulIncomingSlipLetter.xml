@@ -109,6 +109,15 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 							</tr>
 						</xsl:if>
 
+						<xsl:if test="notification_data/metadata/title != ''" >
+							<tr>
+								<td>
+									<b>Title:</b>
+									<xsl:value-of select="notification_data/metadata/title"/>
+								</td>
+							</tr>
+						</xsl:if>
+
                         <xsl:if  test="notification_data/metadata/pages != ''" >
 							<tr>
 								<td>
@@ -179,9 +188,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 							
 
-							<tr>
-								<td><xsl:value-of select="title"/></td>
-							</tr>
+						
 
 							<tr>
 								<td>
