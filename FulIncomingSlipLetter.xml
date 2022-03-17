@@ -188,7 +188,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 							
 
-						
+							<tr>
+								<td><xsl:value-of select="title"/></td>
+							</tr>
 
 							<tr>
 								<td>
