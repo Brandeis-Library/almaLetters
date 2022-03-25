@@ -136,6 +136,15 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 							</tr>
 						</xsl:if>
 
+						<xsl:if  test="notification_data/metadata/issue != ''" >
+							<tr>
+								<td>
+									<b>Issue: </b>
+									<xsl:value-of select="notification_data/metadata/issue"/>
+								</td>
+							</tr>
+						</xsl:if>
+
 						<xsl:if  test="notification_data/metadata/publication_date != ''" >
 							<tr>
 								<td>
