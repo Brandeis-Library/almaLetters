@@ -48,16 +48,16 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 						<tr><td>@@notification_sent@@ @@you_will_have@@ <xsl:value-of select="notification_data/delivery_registration/grace_period"></xsl:value-of> @@within_minutes@@</td></tr>
 					</xsl:when>				
 					<xsl:when test="$registrationStatus = 'ITEM_AVAILABLE'">						
-						<xsl:variable name="deliveryUrl"><xsl:value-of select="notification_data/delivery_registration/delivery_url"/></xsl:variable>
+						<xsl:variable name="repId"><xsl:value-of select="notification_data/delivery_registration/rep_id"/></xsl:variable>
 						<tr><td>&#34;<xsl:value-of select="notification_data/delivery_registration/title"></xsl:value-of>&#34; @@item_available@@</td></tr>
-						<tr><td><strong><a href="{$deliveryUrl}" target="_blank">@@here@@</a></strong>&#160;</td></tr>
+						<tr><td><strong><a href="https://brandeis-psb.alma.exlibrisgroup.com/discovery/delivery/01BRAND_INST:BRAND/{$repId}" target="_blank">@@here@@</a></strong>&#160;</td></tr>
 						<tr><td>@@you_have@@ <xsl:value-of select="notification_data/delivery_registration/grace_period"></xsl:value-of> @@within_minutes@@</td></tr>
 					</xsl:when>				
 					<xsl:when test="$registrationStatus = 'GRACE_PERIOD_EXPIRED'">						
-						<xsl:variable name="deliveryUrl"><xsl:value-of select="notification_data/delivery_registration/delivery_url"/></xsl:variable>
+						<xsl:variable name="repId"><xsl:value-of select="notification_data/delivery_registration/rep_id"/></xsl:variable>
 						<tr><td>@@time_accessing@@ &#34;<xsl:value-of select="notification_data/delivery_registration/title"></xsl:value-of>&#34; @@has_expired@@</td></tr>
 						<tr><td>@@you_can_reregister@@ </td></tr>
-						<tr><td><strong><a href="{$deliveryUrl}" target="_blank">@@register@@</a></strong>&#160;</td></tr>
+						<tr><td><strong><a href="https://brandeis-psb.alma.exlibrisgroup.com/discovery/delivery/01BRAND_INST:BRAND/{$repId}" target="_blank">@@register@@</a></strong>&#160;</td></tr>
 					</xsl:when>
 					<xsl:when test="$registrationStatus = 'REMOVED'">						
 						<tr><td>@@removed@@ &#34;<xsl:value-of select="notification_data/delivery_registration/title"></xsl:value-of>&#34;</td></tr>
