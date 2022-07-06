@@ -267,6 +267,24 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 									</td>
 								</tr>
 							</xsl:if>
+                            <xsl:if test="notification_data/request/display/chapter_title !=''">
+								<tr>
+									<td>
+										<strong> @@chapter@@: </strong>
+										<xsl:value-of select="notification_data/request/display/chapter_title" />
+										<!-- recordTitle.xsl -->
+									</td>
+								</tr>
+							</xsl:if>
+                            <xsl:if test="notification_data/request/display/chapter_author !=''">
+								<tr>
+									<td>
+										<strong> @@chapter@@: </strong>
+										<xsl:value-of select="notification_data/request/display/chapter_title" />
+										<!-- recordTitle.xsl -->
+									</td>
+								</tr>
+							</xsl:if>
 							<xsl:if test="notification_data/request/display/volume_bk !=''">
 								<tr>
 									<td>
