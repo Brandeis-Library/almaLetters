@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	<xsl:include href="esploroHeader.xsl" />
+	<xsl:include href="esploroSenderReceiver.xsl" />
+	<xsl:include href="esploroFooter.xsl" />
+	<xsl:include href="esploroStyle.xsl" />
+
+	<xsl:template match="/">
+		<html>
+			<xsl:if test="notification_data/languages/string">
+				<xsl:attribute name="lang">
+					<xsl:value-of select="notification_data/languages/string"/>
+				</xsl:attribute>
+			</xsl:if>
+
+			<head>
+				<title>
+					<xsl:value-of select="notification_data/general_data/subject"/>
+				</title>
+
+				<xsl:call-template name="generalStyle" />
+			</head>
+			<body>
+				<xsl:attribute name="style">
+					<xsl:call-template name="bodyStyleCss" /><!-- style.xsl -->
+				</xsl:attribute>
+				<xsl:call-template name="head" /> <!-- header.xsl -->
+				<xsl:call-template name="senderReceiver" /> <!-- SenderReceiver.xsl -->
+				<br />
+				<table role='presentation'  cellspacing="0" cellpadding="5" border="0">
+					<tr>
+						<td>
+							<h3>@@dear@@ <xsl:value-of select="notification_data/first_name"/>&#160;<xsl:value-of select="notification_data/last_name"/>,</h3>
+						</td>
+					</tr>
+				</table>
+				<h4>@@ETD_TTITLE@@ <xsl:value-of select="notification_data/title_etd"/></h4>
+				<div class="messageArea">
+					<div class="messageBody">
+						<table role='presentation'  cellspacing="0" cellpadding="5" border="0">
+
+								<tr>
+									<td>
+										@@YOU_HAD@@ <xsl:value-of select="notification_data/downloads_month"/> @@NEW_DOWNLOADS@@ 
+										<xsl:value-of select="notification_data/views_month"/> @@NEW_VIEWS@@ <xsl:value-of select="notification_data/date_of_job"/> 
+										@@ETD@@ @@INST_REPOSITORY@@
+									</td>
+								</tr>
+							<tr>
+								<td>
+								@@TO_DATE@@
+								<xsl:value-of select="notification_data/downloads_total"/> @@TOTAL_DOWNLOADS@@
+								@@AND@@
+								<xsl:value-of select="notification_data/downloads_views"/> @@TOTAL_VIEWS@@
+						  	</td>
+						  </tr>
+						  <br></br>
+							<tr>	<td>
+									@@submitted_assets_link_prefix@@ <a>
+																	<xsl:attribute name="href"><xsl:value-of select="notification_data/profile_url"/></xsl:attribute>
+																	@@submitted_assets_link@@
+																	</a>
+									@@submitted_assets_link_suffix@@	</td>								
+							</tr>
+							<tr><td>To opt-out of receiving these email messages, please contact <a href="mailto:librarypublishing@brandeis.edu">librarypublishing@brandeis.edu</a>.</td></tr>
+								
+						</table>
+						 <br/>
+						<br/><br/>
+					</div>
+				</div>
+				<xsl:call-template name="lastFooter" /><!-- footer.xsl -->
+				<!-- <xsl:call-template name="contactUs" /> --> <!-- footer.xsl -->
+			</body>
+		</html>
+	</xsl:template>
+</xsl:stylesheet>
