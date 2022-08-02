@@ -45,6 +45,13 @@
                                 </td>
                             </tr>
 
+
+
+
+
+
+
+
                             <xsl:for-each select="notification_data/requests_by_library/library_requests_for_display">
                                 <tr>
                                     <td>
@@ -68,18 +75,74 @@
 
                                             <xsl:for-each select="requests/request_for_display">
                                                 <tr>
-                                                    <td>
-                                                        <xsl:value-of select="phys_item_display/title"/>
-                                                    </td>
-                                                    <td>
-                                                        <xsl:value-of select="phys_item_display/author"/>
-                                                    </td>
-                                                    <td>
-                                                        <xsl:value-of select="request/assigned_unit_name"/>
-                                                    </td>
-                                                    <td>
-                                                        <xsl:value-of select="request/work_flow_entity/expiration_date"/>
-                                                    </td>
+
+
+
+                                                    <xsl:choose>
+                                                        <xsl:when test="request/assigned_unit_name = 'Main Library - In Library Use Only'">
+                                                            <td>
+                                                                <strong>
+                                                                    <xsl:value-of select="phys_item_display/title"/>
+                                                                </strong>
+                                                            </td>
+                                                        </xsl:when>
+                                                        <xsl:otherwise>
+                                                            <td>
+                                                                <xsl:value-of select="phys_item_display/title"/>
+                                                            </td>
+                                                        </xsl:otherwise>
+                                                    </xsl:choose>
+
+                                                    <xsl:choose>
+                                                        <xsl:when test="request/assigned_unit_name = 'Main Library - In Library Use Only'">
+                                                            <td>
+                                                                <strong>
+                                                                    <xsl:value-of select="phys_item_display/author"/>
+                                                                </strong>
+                                                            </td>
+                                                        </xsl:when>
+                                                        <xsl:otherwise>
+                                                            <td>
+                                                                <xsl:value-of select="phys_item_display/author"/>
+                                                            </td>
+                                                        </xsl:otherwise>
+                                                    </xsl:choose>
+
+                                                    <xsl:choose>
+                                                        <xsl:when test="request/assigned_unit_name = 'Main Library - In Library Use Only'">
+                                                            <td>
+                                                                <strong>
+                                                                    <xsl:value-of select="request/assigned_unit_name"/>
+                                                                </strong>
+                                                            </td>
+                                                        </xsl:when>
+                                                        <xsl:otherwise>
+                                                            <td>
+                                                                <xsl:value-of select="request/assigned_unit_name"/>
+                                                            </td>
+                                                        </xsl:otherwise>
+                                                    </xsl:choose>
+
+                                                    <xsl:choose>
+                                                        <xsl:when test="request/assigned_unit_name = 'Main Library - In Library Use Only'">
+                                                            <td>
+                                                                <strong>
+                                                                    <xsl:value-of select="request/work_flow_entity/expiration_date"/>
+                                                                </strong>
+                                                            </td>
+                                                        </xsl:when>
+                                                        <xsl:otherwise>
+                                                            <td>
+                                                                <xsl:value-of select="request/work_flow_entity/expiration_date"/>
+                                                            </td>
+                                                        </xsl:otherwise>
+                                                    </xsl:choose>
+
+
+
+
+
+
                                                 </tr>
                                             </xsl:for-each>
                                         </table>
