@@ -450,6 +450,13 @@
 									<tr>
 										<td>The item you have requested is already available as an e-resource through Brandeis Library. Please see below for the link and any instructions on how to access this item digitally.</td>
 									</tr>
+  <tr><td>Due date: <xsl:value-of select="notification_data/request/due_date" /></td></tr>
+								</xsl:when>
+   <xsl:when test="notification_data/query_type = 'Type_8_query_name'">
+									<tr>
+										<td>This interlibrary loan item that you have borrowed is now very overdue. Please return it as soon as possible to avoid replacement charges and a block on your borrowing privileges.</td>
+									</tr>
+  <tr><td><strong>Due date: </strong><xsl:value-of select="notification_data/request/due_date" /></td></tr>
 								</xsl:when>
 
 								<xsl:otherwise>
@@ -530,6 +537,13 @@
 								<tr>
 									<td>
 										<xsl:value-of select="notification_data/library/address/city" />
+									</td>
+								</tr>
+							</xsl:if>
+                                                       <xsl:if test="notification_data/library/address/postal_code !=''">
+								<tr>
+									<td>
+										<xsl:value-of select="notification_data/library/address/postal_code" />
 									</td>
 								</tr>
 							</xsl:if>
