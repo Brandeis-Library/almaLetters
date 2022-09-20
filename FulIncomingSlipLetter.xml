@@ -65,6 +65,15 @@
 								</td>
 							</tr>
 
+							<xsl:if test="notification_data/incoming_request/borrowing_institution">
+								<tr>
+									<td>
+										<b>Lending institution:</b>
+										<xsl:value-of select="notification_data/incoming_request/borrowing_institution"/>
+									</td>
+								</tr>
+							</xsl:if>
+
 
 							<tr>
 								<td>
