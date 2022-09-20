@@ -65,7 +65,7 @@
 								</td>
 							</tr>
 
-							<xsl:if test="notification_data/incoming_request/borrowing_institution">
+							<xsl:if test="notification_data/incoming_request/borrowing_institution != ''">
 								<tr>
 									<td>
 										<b>Lending institution:</b>
