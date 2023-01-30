@@ -39,7 +39,12 @@
 					<div class="messageBody">
 						<table role='presentation'  cellspacing="0" cellpadding="5" border="0">
                           <xsl:if test="notification_data/request/status_note_display = 'The resource sharing request was cancelled because the resource was found in your institution. A local request was created instead'">
-                            <tr><td>Your interlibrary loan request has been found at our institution.  If your request was for a physical item, you'll receive another email when your item is ready to be picked up at the library.  If your request was for scanned material, you will receive an email with a link to your requested content when we've finished scanning it for you.</td></tr>
+                            <tr><td>Your interlibrary loan request has been found at Brandeis.  If your request was for a physical item, you'll receive another email when your item is ready to be picked up at the library.  If your request was for scanned material, you will receive an email with a link to your requested content when we've finished scanning it for you.</td></tr>
+	<tr>
+								<td>
+									<xsl:call-template name="recordTitle" /> <!-- recordTitle.xsl -->
+								</td>
+							</tr>
                            </xsl:if>
                            <xsl:if test="notification_data/request/status_note_display != 'The resource sharing request was cancelled because the resource was found in your institution. A local request was created instead'">
 							<tr>
@@ -316,19 +321,16 @@
 						</table>
 						<br />
 						<table role='presentation' >
-
-							<tr>
-								<td>@@sincerely@@</td>
-							</tr>
-							<tr>
-								<td>@@department@@</td>
-							</tr>
+                                                <xsl:call-template name="footerPadding" />
+							         	<tr>
+					<td>@@sincerely@@,</td><tr><td>@@department@@</td></tr>
+                            
+				</tr>
 
 						</table>
 					</div>
 				</div>
 				<xsl:call-template name="lastFooter" /> <!-- footer.xsl -->
-				<xsl:call-template name="contactUs" />
 			</body>
 		</html>
 	</xsl:template>
