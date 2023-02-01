@@ -59,11 +59,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 						<xsl:variable name="deliveryUrl"><xsl:value-of select="notification_data/delivery_registration/delivery_url"/></xsl:variable>
 						<tr><td>&#34;<xsl:value-of select="notification_data/delivery_registration/title"></xsl:value-of>&#34; @@item_available@@</td></tr>
 						<xsl:choose>
-							<xsl:when test="$periodUnit != '' and $deliveryUrl != ''">
-								<tr><td><strong><a href="{$deliveryUrl}" target="_blank">@@here@@</a></strong>&#160;</td></tr>
-								<tr><td>@@you_have@@ <xsl:value-of select="notification_data/delivery_registration/grace_period"></xsl:value-of> <xsl:value-of select="concat(' ', $periodUnit)" /> @@to_start_viewing@@</td></tr>
-							</xsl:when>
-							<xsl:when test="$periodUnit != '' and $deliveryUrl = ''">
+							<xsl:when test="$periodUnit != ''">
 								<tr><td>@@you_have@@ <xsl:value-of select="notification_data/delivery_registration/grace_period"></xsl:value-of> <xsl:value-of select="concat(' ', $periodUnit)" /> @@to_start_viewing@@</td></tr>
 							</xsl:when>
 							<xsl:when test="$periodUnit = '' and $deliveryUrl = ''">
