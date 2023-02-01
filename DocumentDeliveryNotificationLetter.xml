@@ -45,7 +45,7 @@
 
                         <table role='presentation' cellspacing="0" cellpadding="5" border="0">
                             <tr>
-                                <p>Your requested item has been digitized.</p>
+                                <p>Your requested item is now available.  You have 30 days to download this item.  This material may be protected by copyright law (Title 17 U.S. Code).  </p>
                             </tr>
                             <tr>
                                 <td><strong>@@title@@: </strong><xsl:value-of select="notification_data/phys_item_display/title"/>
