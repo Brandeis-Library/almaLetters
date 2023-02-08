@@ -67,19 +67,12 @@
                             </xsl:if >
 
 
-
-                            <xsl:if test="((notification_data/download_url_local != '' ) or (notification_data/download_url_saml != '') or (notification_data/download_url_cas != ''))">
-                                <tr>
-                                    <td>@@to_see_the_resource@@</td>
-                                </tr>
-                            </xsl:if>
-
                             <xsl:if test="notification_data/download_url_saml != ''">
                                 <tr>
                                     <td>@@for_saml_users@@<a>
                                         <xsl:attribute name="href">
                                             <xsl:value-of select="notification_data/download_url_saml" />
-                                        </xsl:attribute>@@click_here@@</a>
+                                        </xsl:attribute>Download your requested resource</a>
                                 </td>
                             </tr>
                         </xsl:if>
