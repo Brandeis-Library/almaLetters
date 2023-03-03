@@ -59,7 +59,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 						</xsl:if>
                                               
 						<tr>
-							<td><strong>@@request_id@@: </strong><img src="cid:request_id_barcode.png" alt="Request Barcode"/></td>
+							<td><strong>@@request_id@@: </strong><br /><img src="cid:request_id_barcode.png" alt="Request Barcode"/></td>
 						</tr>
                                                  <xsl:if  test="notification_data/external_id != ''" >
                                                 <tr>
@@ -83,7 +83,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                                                </xsl:if>
 						<xsl:if  test="notification_data/request/selected_inventory_type='ITEM'" >
 						<tr>
-							<td><strong>@@item_barcode@@: </strong><img src="cid:item_id_barcode.png" alt="Item Barcode"/></td>
+							<td><strong>@@item_barcode@@: </strong><br /><img src="cid:item_id_barcode.png" alt="Item Barcode"/></td>
 						</tr>
 						</xsl:if>
 						
@@ -232,24 +232,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 							<td><strong>@@system_notes@@:</strong><xsl:value-of select="notification_data/request/system_notes"/></td>
 						</tr>
 						</xsl:if>
-
-						<xsl:if test="notification_data/request/note != ''">
-							<tr>
-							<td><strong>@@request_note@@:</strong> <xsl:value-of select="notification_data/request/note"/></td>
-						</tr>
-						</xsl:if>
-
-
 					</table>
 				</div>
 			</div>
-
-
-
-
-
-
-
 
 
 </body>
