@@ -91,7 +91,7 @@
 							<xsl:if test="notification_data/partner_address/city !=''">
 								<tr>
 									<td>
-										<xsl:value-of select="notification_data/partner_address/city"/>&#160;<xsl:value-of select="notification_data/partner_address/state_province"/>
+										<xsl:value-of select="notification_data/partner_address/city"/>&#160;<xsl:value-of select="notification_data/partner_address/state_province"/>&#160;<xsl:value-of select="notification_data/partner_address/postal_code"/
 									</td>
 								</tr>
 							</xsl:if>
