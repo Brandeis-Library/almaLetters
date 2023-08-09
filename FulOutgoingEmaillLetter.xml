@@ -231,6 +231,15 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 									</td>
 								</tr>
 							</xsl:if>
+	                                                <xsl:if test="notification_data/request/display/oclc_number !=''">
+								<tr>
+									<td>
+										<strong> OCLC number: </strong>
+										<xsl:value-of select="notification_data/request/display/oclc_number" />
+										<!-- recordTitle.xsl -->
+									</td>
+								</tr>
+							</xsl:if>
 							<xsl:if test="notification_data/request/display/doi !=''">
 								<tr>
 									<td>
@@ -270,7 +279,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                             <xsl:if test="notification_data/request/display/chapter_title !=''">
 								<tr>
 									<td>
-										<strong> @@chapter@@: </strong>
+										<strong> Chapter title: </strong>
 										<xsl:value-of select="notification_data/request/display/chapter_title" />
 										<!-- recordTitle.xsl -->
 									</td>
@@ -279,8 +288,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                             <xsl:if test="notification_data/request/display/chapter_author !=''">
 								<tr>
 									<td>
-										<strong> @@chapter@@: </strong>
-										<xsl:value-of select="notification_data/request/display/chapter_title" />
+										<strong> Chapter author: </strong>
+										<xsl:value-of select="notification_data/request/display/chapter_author" />
 										<!-- recordTitle.xsl -->
 									</td>
 								</tr>
@@ -340,13 +349,6 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 								</tr>
 							</xsl:if>
 
-							<tr>
-								<td>
-									<strong> @@date@@: </strong>
-									<xsl:value-of select="notification_data/general_data/current_date" />
-									<!-- recordTitle.xsl -->
-								</td>
-							</tr>
 							<xsl:if test="notification_data/request/external_request_id !=''">
 								<tr>
 									<td>
@@ -358,9 +360,17 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 							</xsl:if>
 							<tr>
 								<td>
-									<strong> @@request_format@@: </strong>
-									<xsl:value-of select="notification_data/request/format_display" />
+								    <xsl:choose>
+								        <xsl:when test="notification_data/request/format_display='Digital' and notification_data/request/display/material_type='Book'">
+									        <strong> @@request_format@@: </strong>
+									        Book Chapter (Digital)
+								        </xsl:when>
+								        <xsl:otherwise>
+								            <strong> @@request_format@@: </strong>
+									        <xsl:value-of select="notification_data/request/format_display" />
+								        </xsl:otherwise>
 									<!-- recordTitle.xsl -->
+									</xsl:choose>
 								</td>
 							</tr>
 
@@ -391,70 +401,11 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 						</table>
 						<br />
-						<table role='presentation' >
-
-							<tr>
-								<td>@@signature@@</td>
-							</tr>
-							<tr>
-								<td>
-									<xsl:value-of select="notification_data/library/name" />
-								</td>
-							</tr>
-							<xsl:if test="notification_data/library/address/line1 !=''">
-								<tr>
-									<td>
-										<xsl:value-of select="notification_data/library/address/line1" />
-									</td>
-								</tr>
-							</xsl:if>
-							<xsl:if test="notification_data/library/address/line2 !=''">
-								<tr>
-									<td>
-										<xsl:value-of select="notification_data/library/address/line2" />
-									</td>
-								</tr>
-							</xsl:if>
-							<xsl:if test="notification_data/library/address/line3 !=''">
-								<tr>
-									<td>
-										<xsl:value-of select="notification_data/library/address/line3" />
-									</td>
-								</tr>
-							</xsl:if>
-							<xsl:if test="notification_data/library/address/line4 !=''">
-								<tr>
-									<td>
-										<xsl:value-of select="notification_data/library/address/line4" />
-									</td>
-								</tr>
-							</xsl:if>
-							<xsl:if test="notification_data/library/address/line5 !=''">
-								<tr>
-									<td>
-										<xsl:value-of select="notification_data/library/address/line5" />
-									</td>
-								</tr>
-							</xsl:if>
-							<xsl:if test="notification_data/library/address/city !=''">
-								<tr>
-									<td>
-										<xsl:value-of select="notification_data/library/address/city" />
-									</td>
-								</tr>
-							</xsl:if>
-							<xsl:if test="notification_data/library/address/country !=''">
-								<tr>
-									<td>
-										<xsl:value-of select="notification_data/library/address/country" />
-									</td>
-								</tr>
-
-							</xsl:if>
-						</table>
+						<xsl:call-template name="rsFooter" />
 					</div>
 				</div>
 				<xsl:call-template name="lastFooter" />
+
 				<!-- footer.xsl -->
 			</body>
 		</html>
