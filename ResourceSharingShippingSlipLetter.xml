@@ -114,7 +114,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
      
      
      
-      <xsl:if test="notification_data/partner_name != 'Wentworth Institute of Technology'">
+      <xsl:if test="not(starts-with(notification_data/metadata/source,'A-G'))">
 	<html>
 		<head>
 		<xsl:call-template name="generalStyle" />
