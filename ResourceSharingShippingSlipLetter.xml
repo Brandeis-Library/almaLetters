@@ -36,7 +36,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:template match="/">
     
-     <xsl:if test="notification_data/partner_name = 'Wentworth Institute of Technology'">
+     <xsl:if test="starts-with(notification_data/metadata/source,'A-G')">
          
           	<html>
 		<head>
@@ -57,7 +57,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		        <td><xsl:value-of select="$externalRequestId"/></td>
 		    </tr>
 	    </table>
-	    <p><xsl:attribute name="style"><xsl:call-template name="referenceBarcode" /></xsl:attribute><xsl:value-of select="$externalRequestId"/></p>
+	    <p><xsl:attribute name="style"><xsl:call-template name="referenceBarcode" /></xsl:attribute><xsl:value-of select="concat('*',$externalRequestId,'*')"/></p>
 	    <table>
 		    <tr>
 		        <td>Lender:</td>
@@ -81,7 +81,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		        
 		    </tr>
 		</table>
-		<p><xsl:attribute name="style"><xsl:call-template name="referenceBarcode" /></xsl:attribute><xsl:value-of select="notification_data/incoming_request/item_barcode"/></p>
+		<p><xsl:attribute name="style"><xsl:call-template name="referenceBarcode" /></xsl:attribute><xsl:value-of select="concat('*',notification_data/incoming_request/item_barcode,'*')"/></p>
 		<p>When you are done with this material, <strong>Please return it to:</strong></p>
 		<table>
 	      <tr>
