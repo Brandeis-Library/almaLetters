@@ -55,19 +55,12 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
             <td>Visit the Information and Borrowing Desk during <a href="https://www.brandeis.edu/library/about/hours/index.html">our operating hours</a> to pickup your items.</td>
  
          </tr>
-       <xsl:if test="notification_data/request/calculated_destination_name = 'Main Library - Reading Room'">
+       <xsl:if test="notification_data/request/calculated_destination_name = 'Main Library - In Library Use Only'">
         <tr>         
                 <td>Please note that your item is for <strong>in library use only</strong> and cannot leave the library.</td>          
          </tr>
         </xsl:if>
-        <tr>
-   <td><strong>For Contactless Pick Up Lockers:</strong></td>
-        </tr>
-
-        <tr>
-            <td>You will receive a second email from LuxerOne with the access code for your pick up. Once you have your access code, visit the Contactless Pick Up Lockers on level 2 of the Usdan Student Center (Near DCL) and enter your access code to pick up your items. Items will be held in the lockers for 72 hours. After 72 hours, the items can be picked up from the hold shelf at the Information and Borrowing Desk in the Goldfarb Library. If you did not receive the LuxerOne email, please contact us at  <a href="mailto:borrowing@brandeis.edu">borrowing@brandeis.edu</a> .</td>
-
-        </tr>
+        
 
         <tr>
             <td>If you no longer need this item or have any questions please email <a href="mailto:borrowing@brandeis.edu">borrowing@brandeis.edu</a> or respond to this email.</td>
