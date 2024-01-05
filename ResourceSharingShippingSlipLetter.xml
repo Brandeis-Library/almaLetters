@@ -47,8 +47,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			<body style="width: 50%;">
 			 
 		<h1><xsl:attribute name="style"><xsl:call-template name="comcatBanner" /></xsl:attribute> Commonwealth Catalog</h1>
-		<p><strong>Please do not remove this bookstrap!</strong></p>
-		<xsl:variable name="externalRequestId" select="substring-after(notification_data/incoming_request/external_request_id, '-')"/>
+		<p><strong>Please do not remove this bookstrap</strong></p>
+		<xsl:variable name="externalRequestId" select="concat('ILL',substring-after(notification_data/incoming_request/external_request_id, '-'))"/>
 		<table> 
 		    <!-- example exl:brandrs//MASSVC-587203-->
 
@@ -57,7 +57,11 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		        <td><xsl:value-of select="$externalRequestId"/></td>
 		    </tr>
 	    </table>
-	    <p><xsl:attribute name="style"><xsl:call-template name="referenceBarcode" /></xsl:attribute><xsl:value-of select="concat('*',$externalRequestId,'*')"/></p>
+	    <p>
+	        <span><xsl:attribute name="style"><xsl:call-template name="referenceBarcode" /></xsl:attribute><xsl:value-of select="concat('*',$externalRequestId,'*')"/></span>
+            <xsl:text>&#160;&#160;  </xsl:text><span><xsl:attribute name="style"><xsl:call-template name="highlightText" /></xsl:attribute>Scan this barcode!</span>	    
+	    
+	    </p>
 	    <table>
 		    <tr>
 		        <td>Lender:</td>
@@ -65,7 +69,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		    </tr>
 		    <tr>
 		        <td>Route:</td>
-		        <td><strong><xsl:value-of select="notification_data/partner_shipping_info_list/partner_shipping_info/address5"/></strong></td>
+		        <td><strong>M</strong></td>
 		    </tr>
 		     <tr>
 		        <td>Title:</td>
@@ -73,15 +77,13 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		    </tr>
 		    <tr>
 		        <td>Item Barcode:</td>
-		        
-		        <td><xsl:value-of select="notification_data/incoming_request/item_barcode"/></td>
-		        
 		    </tr>
+		    
 		    <tr>
 		        
 		    </tr>
 		</table>
-		<p><xsl:attribute name="style"><xsl:call-template name="referenceBarcode" /></xsl:attribute><xsl:value-of select="concat('*',notification_data/incoming_request/item_barcode,'*')"/></p>
+		<p><span><xsl:attribute name="style"><xsl:call-template name="highlightText" /></xsl:attribute> Book barcodes will not work to update records in ComCat.  Please use the request number scannable barcode above.</span></p>
 		<p>When you are done with this material, <strong>Please return it to:</strong></p>
 		<table>
 	      <tr>
@@ -194,6 +196,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			<center><b><xsl:value-of select="address1"/></b></center>
 			<center><xsl:value-of select="address2"/></center>
 			<center><b><xsl:value-of select="address3"/></b></center>
+			<center><b><xsl:value-of select="address4"/></b></center>
+			<center><b><xsl:value-of select="address5"/></b></center>
 			<center><xsl:value-of select="city"/>&#160;<xsl:value-of select="state"/>&#160;<xsl:value-of select="postal_code"/></center>
 			<br></br>
 		</xsl:for-each>
