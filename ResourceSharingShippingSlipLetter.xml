@@ -50,7 +50,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		<p><strong>Please do not remove this bookstrap</strong></p>
 		<xsl:variable name="externalRequestId" select="concat('ILL',substring-after(notification_data/incoming_request/external_request_id, '-'))"/>
 		<table> 
-		    <!-- example exl:brandrs//MASSVC-587203-->
+		    <!-- example is exl:brandrs//MASSVC-587203-->
 
 		     <tr>
 		        <td>Request number:</td>
@@ -59,7 +59,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	    </table>
 	    <p>
 	        <span><xsl:attribute name="style"><xsl:call-template name="referenceBarcode" /></xsl:attribute><xsl:value-of select="concat('*',$externalRequestId,'*')"/></span>
-            <xsl:text>&#160;&#160;  </xsl:text><span><xsl:attribute name="style"><xsl:call-template name="highlightText" /></xsl:attribute>Scan this barcode!</span>	    
+            <xsl:text>&#160;&#160;  </xsl:text><br></br><span><xsl:attribute name="style"><xsl:call-template name="highlightText" /></xsl:attribute>Scan this barcode!</span>	    
 	    
 	    </p>
 	    <table>
@@ -73,7 +73,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		    </tr>
 		     <tr>
 		        <td>Title:</td>
-		        <td><xsl:value-of select="notification_data/metadata/title"/></td>
+		        <td><xsl:value-of select="substring(notification_data/metadata/title, 0, 131)" /></td>
 		    </tr>
 		    <tr>
 		        <td>Item Barcode:</td>
@@ -84,17 +84,21 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		    </tr>
 		</table>
 		<p><span><xsl:attribute name="style"><xsl:call-template name="highlightText" /></xsl:attribute> Book barcodes will not work to update records in ComCat.  Please use the request number scannable barcode above.</span></p>
-		<p>When you are done with this material, <strong>Please return it to:</strong></p>
+		<br></br><p>When you are done with this material, <strong>Please return it to:</strong></p>
 		<table>
 	      <tr>
 		        <td>Borrower:</td>
 		        <td><xsl:value-of select="notification_data/partner_name"/></td>
 		    </tr>
+		     <tr>
+		        <td>Route:</td>
+		        <td><strong><xsl:value-of select="notification_data/partner_shipping_info_list/partner_shipping_info/address5"/></strong></td>
+		    </tr>
 		    <tr>
 		        <td>Notes:</td>
 		    </tr>
 		</table>  
-        <br /><br /><br /><br /><br />
+        <br />
 		<p>PLEASE RETURN TO THE LIBRARY WHERE YOU RECEIVED IT. NO RENEWALS.</p>
 </body>
 </html>
