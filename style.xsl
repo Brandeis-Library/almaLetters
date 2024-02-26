@@ -117,12 +117,15 @@ margin:0;
     
     table {
     width: 100%;
+    padding: 0;
+    font-size: 85%;
     border-spacing:10px;
     margin-top:25px;
     }
     
 
     p {
+    font-size: 90%;
     margin-left:10px;
     margin-top:5px;
     }
