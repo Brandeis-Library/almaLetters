@@ -103,7 +103,6 @@ margin:0;
 
 <xsl:template name="comcatBanner">
    background-color: #A3BFE0;
-   margin-top: 65px;
     font-weight: 600;
     font-size: 24pt;
     padding: 20px;

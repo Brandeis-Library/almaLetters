@@ -46,7 +46,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 			<body style="width: 50%;">
 			 
-		<h1><xsl:attribute name="style"><xsl:call-template name="comcatBanner" /></xsl:attribute> Commonwealth Catalog</h1>
+		<br></br><br></br><h1><xsl:attribute name="style"><xsl:call-template name="comcatBanner" /></xsl:attribute> Commonwealth Catalog</h1>
 		<p><strong>Please do not remove this bookstrap</strong></p>
 		<xsl:variable name="externalRequestId" select="concat('ILL',substring-after(notification_data/incoming_request/external_request_id, '-'))"/>
 		<table> 
