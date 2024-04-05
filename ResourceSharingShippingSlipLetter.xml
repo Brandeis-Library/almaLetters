@@ -35,6 +35,92 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 </xsl:template>
 
 <xsl:template match="/">
+    
+     <xsl:if test="starts-with(notification_data/metadata/source,'A-G')">
+         
+          	<html>
+		<head>
+		<xsl:call-template name="referenceBarcodeImport" />
+		<xsl:call-template name="comcatTable" />
+		</head>
+
+			<body style="width: 50%;">
+			 
+		<br></br><br></br><h1><xsl:attribute name="style"><xsl:call-template name="comcatBanner" /></xsl:attribute> Commonwealth Catalog</h1>
+		<p><strong>Please do not remove this bookstrap</strong></p>
+		<xsl:variable name="externalRequestId" select="concat('ILL',substring-after(notification_data/incoming_request/external_request_id, '-'))"/>
+		<table> 
+		    <!-- example is exl:brandrs//MASSVC-587203-->
+
+		     <tr>
+		        <td>Request number:</td>
+		        <td><xsl:value-of select="$externalRequestId"/></td>
+		    </tr>
+	    </table>
+	    <p>
+	        <span><xsl:attribute name="style"><xsl:call-template name="referenceBarcode" /></xsl:attribute><xsl:value-of select="concat('*',$externalRequestId,'*')"/></span>
+            <xsl:text>&#160;&#160;  </xsl:text><br></br><span><xsl:attribute name="style"><xsl:call-template name="highlightText" /></xsl:attribute>Scan this barcode!</span>	    
+	    
+	    </p>
+	    <table>
+		    <tr>
+		        <td>Lender:</td>
+		        <td>Brandeis University</td>
+		    </tr>
+		    <tr>
+		        <td>Route:</td>
+		        <td><strong>M</strong></td>
+		    </tr>
+		     <tr>
+		        <td>Title:</td>
+		        <td><xsl:value-of select="substring(notification_data/metadata/title, 0, 131)" /></td>
+		    </tr>
+		    <tr>
+		        <td>Item Barcode:</td>
+		    </tr>
+		    
+		    <tr>
+		        
+		    </tr>
+		</table>
+		<p><span><xsl:attribute name="style"><xsl:call-template name="highlightText" /></xsl:attribute> Book barcodes will not work to update records in ComCat.  Please use the request number scannable barcode above.</span></p>
+		<br></br><p>When you are done with this material, <strong>Please return it to:</strong></p>
+		<table>
+	      <tr>
+		        <td>Borrower:</td>
+		        <td><xsl:value-of select="notification_data/partner_name"/></td>
+		    </tr>
+		     <tr>
+		        <td>Route:</td>
+		        <td><strong><xsl:value-of select="notification_data/partner_shipping_info_list/partner_shipping_info/address5"/></strong></td>
+		    </tr>
+		    <tr>
+		        <td>Notes:</td>
+		    </tr>
+		</table>  
+        <br />
+		<p>PLEASE RETURN TO THE LIBRARY WHERE YOU RECEIVED IT. NO RENEWALS.</p>
+</body>
+</html>
+     
+          	
+          	
+     </xsl:if> 
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+      <xsl:if test="not(starts-with(notification_data/metadata/source,'A-G'))">
 	<html>
 		<head>
 		<xsl:call-template name="generalStyle" />
@@ -50,6 +136,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 			<div class="messageArea">
 				<div class="messageBody">
+                                         <div style="padding: 5px; border: 5px solid; border-radius:3px; text-align:center; font-size: 1.1em;">Please do not put any stickers on our books.</div>
 					 <table cellspacing="0" cellpadding="5" border="0">
 
 						<tr>
@@ -69,11 +156,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 					      <tr>
 								  <td><b>External ID: </b><img src="cid:externalId.png" alt="externalId" /></td>
 					      </tr>
-                                <tr>
-                                   <td><b>Internal (Brandeis) ID: </b>
-                                      <img src="cid:resource_sharing_request_id.png" />
-                                   </td>
-                                </tr>
+    	
 
 		               <br></br>
 			              <tr>
@@ -117,6 +200,8 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			<center><b><xsl:value-of select="address1"/></b></center>
 			<center><xsl:value-of select="address2"/></center>
 			<center><b><xsl:value-of select="address3"/></b></center>
+			<center><b><xsl:value-of select="address4"/></b></center>
+			<center><b><xsl:value-of select="address5"/></b></center>
 			<center><xsl:value-of select="city"/>&#160;<xsl:value-of select="state"/>&#160;<xsl:value-of select="postal_code"/></center>
 			<br></br>
 		</xsl:for-each>
@@ -128,7 +213,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 </body>
 </html>
-
+   </xsl:if> 
 
 	</xsl:template>
 </xsl:stylesheet>
