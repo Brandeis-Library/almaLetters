@@ -213,7 +213,12 @@
 							</tr>
 							<tr>
 								<td>
-									<xsl:value-of select="notification_data/library/name"/>
+								    <xsl:if test="notification_data/alternate_symbol !=''">
+                                       <xsl:value-of select="notification_data/alternate_symbol"/>
+                                   	</xsl:if>
+                                   	<xsl:if test="notification_data/alternate_symbol =''">
+									    <xsl:value-of select="notification_data/library/name"/>
+									</xsl:if>
 								</td>
 							</tr>
 							<xsl:if test="notification_data/library/address/line1 !=''">
