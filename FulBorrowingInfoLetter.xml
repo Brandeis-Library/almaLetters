@@ -62,15 +62,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 							</xsl:when>
 
 							<xsl:otherwise>
-								<xsl:choose>
-									<xsl:when test="notification_data/note != ''">
-										<tr>
-											<td><strong>@@failure_reason@@: <xsl:value-of select="notification_data/note"/></strong></td>
-										</tr>
-									</xsl:when>
-								</xsl:choose>
+
 								<tr>
-									<td><strong>@@contact_dep@@</strong></td>
+									<td>Please contact Interlibrary Loan (<a href="mailto:ill@brandeis.edu">ill@brandeis.edu</a>) if you have questions.</td>
 								</tr>
 							</xsl:otherwise>
 
