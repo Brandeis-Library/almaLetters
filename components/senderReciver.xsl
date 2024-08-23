@@ -18,6 +18,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 			<tr><td><xsl:value-of select="address/line1"/></td></tr>
 			<tr><td><xsl:value-of select="address/line2"/></td></tr>
 			<tr><td><xsl:value-of select="address/city"/></td></tr>
+			<tr><td><xsl:value-of select="address/state_province"/></td></tr>
 			<tr><td><xsl:value-of select="address/postal_code"/></td></tr>
 			<tr><td><xsl:value-of select="address/country"/></td></tr>
 		</table>
