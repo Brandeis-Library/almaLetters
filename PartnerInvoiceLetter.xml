@@ -31,7 +31,7 @@
                 <xsl:call-template name="senderReceiver" />
 
                 <br />
-
+                <xsl:call-template name="toWhomIsConcerned" /> <!-- mailReason.xsl -->
 
                 <xsl:if  test="notification_data/invoice_id != ''" >
                     <h4>@@invoiceNumber@@: <xsl:value-of select="/notification_data/invoice_id"/></h4>
@@ -56,12 +56,8 @@
                                 <td></td>
                             </xsl:if>
                             <td><xsl:value-of select="title"/></td>
-                            <xsl:if  test="external_identifier != '0' and external_identifier != '1' and fee_type != 'Copyright Fee'" >
+                            <xsl:if  test="external_identifier != '0' and external_identifier != '1'" >
                                 <td><xsl:value-of select="fee_type"/></td>
-                                <td align="right"><xsl:value-of select="charge_amount"/>&#160;<xsl:value-of select="currency"/></td>
-                            </xsl:if>
-                            <xsl:if  test="external_identifier != '0' and external_identifier != '1' and fee_type = 'Copyright Fee'" >
-                                <td>Lost Item Replacement Fee</td>
                                 <td align="right"><xsl:value-of select="charge_amount"/>&#160;<xsl:value-of select="currency"/></td>
                             </xsl:if>
                             <xsl:if  test="external_identifier = '0' or external_identifier = '1'" >
@@ -80,19 +76,18 @@
                 </table>
 
                 <br />
+                <br />
                 <h3>Payment information:</h3>
                 <p>
 Physical loan:$30 USD/2.5 IFLA vouchers for libraries outside of North America (United States, Canada, Mexico).  Vouchers for loans may be returned with the item. Please put vouchers in a separate envelope inside the package and address to Emily Hartman.
 </p>
-                <p>For lost book invoices, we prefer replacement copies. Please reply to this email for replacement copy requirements.</p>
                 <p>We accept payment by check, credit card, or IFLA vouchers. Please make checks payable to Brandeis University. Please reply to this email if you would like to pay by credit card.</p>
-                <p>Please address checks, vouchers, or replacement copies to:</p>
+                <p>Please address checks or vouchers to:</p>
                 <p>Emily Hartman<br />
 Brandeis Library, Interlibrary Loan<br />
 415 South St MS 045<br />
 Waltham, MA 02453</p>
                 <p>Payments must pass through the Interlibrary Loan office. If your institution requires direct deposits, please reply to this email for further instructions.</p>
-
             </body>
         </html>
     </xsl:template>
