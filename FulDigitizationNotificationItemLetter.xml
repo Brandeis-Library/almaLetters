@@ -45,6 +45,27 @@
                             <tr>
                                 <td>@@your_request@@.</td>
                             </tr>
+                            <xsl:if test="$deliveryTime != '' or $loanPeriod != '' or $patronCost != ''">
+					            @@borrowing_terms@@:
+                                <xsl:if test="$deliveryTime != ''">
+						@@deliver_in@@
+                                    <xsl:value-of select="$deliveryTime"/>
+                                    <xsl:value-of select="' '" />
+						@@hours@@
+                                    <xsl:value-of select="' '" />
+                                </xsl:if>
+                                <xsl:if test="$loanPeriod != ''">
+						@@keep_for@@
+                                    <xsl:value-of select="$loanPeriod"/>
+                                    <xsl:value-of select="' '" />
+						@@days@@
+                                    <xsl:value-of select="' '" />
+                                </xsl:if>
+                                <xsl:if test="$patronCost != ''">
+						@@price@@
+                                    <xsl:value-of select="$patronCost"/>
+                                </xsl:if>
+                            </xsl:if>
                             <xsl:if test="$isDeposit='true'">
                                 <tr>
                                     <td>@@material@@:</td>
@@ -60,6 +81,13 @@
                                     </td>
                                 </tr>
                             </xsl:if>
+                            <xsl:if test="(notification_data/incoming_request/due_date !='') and ($isEbook='true')">
+                                <tr>
+                                    <td>@@due_date@@:<xsl:value-of select="notification_data/incoming_request/due_date"/>
+                                    </td>
+                                </tr>
+                            </xsl:if>
+
 
                             <xsl:if test="$isDigitalDocDelivery='true' or $isDeposit='false'">                                <!-- DOCUMENT DELIVERY -->
                                 <tr>
