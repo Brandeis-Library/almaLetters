@@ -54,15 +54,19 @@
                         <xsl:if  test="notification_data/lending_request_lost_damaged_fee/charge_amount != ''" >
                             <b>@@chargeAmount@@: <xsl:value-of select="notification_data/lending_request_lost_damaged_fee/charge_amount"/>&#160;<xsl:value-of select="notification_data/lending_request_lost_damaged_fee/currency"/></b>
                         </xsl:if>
+                        <p>We prefer replacement copies. Please reply to this email for replacement copy requirements.</p>
+                        <p>We accept payment by check or credit card. Please make checks payable to Brandeis University. Please reply to this email if you would like to pay by credit card.</p>
+                         <p>Payments must pass through the Interlibrary Loan office. If your institution requires direct deposits, please reply to this email for further instructions.</p>
+                <p>Please address replacement copies to:</p>
+                <p>Emily Hartman<br />
+                Brandeis Library, Interlibrary Loan<br />
+                415 South St MS 045<br />
+                Waltham, MA 02453</p>
+               
                     </table>
 
                     <br />
-                    <table role='presentation' >
-
-                        <tr><td>@@sincerely@@</td></tr>
-                        <tr><td>@@department@@</td></tr>
-
-                    </table>
+               
                 </div>
             </body>
         </html>
