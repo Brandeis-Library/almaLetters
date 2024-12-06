@@ -14,6 +14,10 @@
     <xsl:variable name="isDeposit" select="/notification_data/request/deposit_indicator" />
     <xsl:variable name="isDigitalDocDelivery" select="/notification_data/digital_document_delivery" />
     <xsl:variable name="fileUploaded" select="/notification_data/file_uploaded" />
+    <xsl:variable name="deliveryTime" select="/notification_data/delivery_time" />
+    <xsl:variable name="loanPeriod" select="/notification_data/loan_period" />
+    <xsl:variable name="patronCost" select="/notification_data/patron_cost" />
+    <xsl:variable name="isEbook" select="notification_data/resource_sharing_request/book_indication" />
 
     <xsl:template match="/">
         <html>
