@@ -132,6 +132,12 @@
 
                             </xsl:for-each>
                         </xsl:if>
+                        <xsl:if test="(notification_data/resource_sharing_request/due_date !='') and ($isEbook='true')">
+                            <tr>
+                                <td>@@due_date@@:<xsl:value-of select="notification_data/resource_sharing_request/due_date"/>
+                                </td>
+                            </tr>
+                        </xsl:if>
                         <tr>
                             <td>@@sincerely@@<br />
 @@department@@</td>
