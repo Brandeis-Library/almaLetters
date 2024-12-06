@@ -48,7 +48,9 @@
                                 <p>Your requested item is now available.  You have 30 days to download this item.  This material may be protected by copyright law (Title 17 U.S. Code).  </p>
                             </tr>
                             <tr>
-                                <td><strong>@@title@@: </strong><xsl:value-of select="notification_data/phys_item_display/title"/>
+                                <td>
+                                    <strong>@@title@@: </strong>
+                                    <xsl:value-of select="notification_data/phys_item_display/title"/>
                                 </td>
                             </tr>
 
@@ -57,13 +59,23 @@
                                 <xsl:variable name="requestFileName" select="notification_data/download_url_cas" />
 
                                 <xsl:variable name="requestId" select="substring-after($requestFileName, 'digitalDoc=')"/>
-                                <tr><td> <strong>Request ID: </strong><xsl:value-of select="$requestId" /></td></tr>
+                                <tr>
+                                    <td>
+                                        <strong>Request ID: </strong>
+                                        <xsl:value-of select="$requestId" />
+                                    </td>
+                                </tr>
 
                             </xsl:if >
 
 
                             <xsl:if test="notification_data/external_request_id != ''">
-                                <tr><td><strong>External request ID: </strong><xsl:value-of select="notification_data/external_request_id" /></td></tr>
+                                <tr>
+                                    <td>
+                                        <strong>External request ID: </strong>
+                                        <xsl:value-of select="notification_data/external_request_id" />
+                                    </td>
+                                </tr>
                             </xsl:if >
 
 
