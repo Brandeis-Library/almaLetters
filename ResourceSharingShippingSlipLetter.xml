@@ -95,6 +95,10 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 		        <td><strong><xsl:value-of select="notification_data/partner_shipping_info_list/partner_shipping_info/address5"/></strong></td>
 		    </tr>
 		    <tr>
+		        <td>Library Name:</td>
+		        <td><strong><xsl:value-of select="notification_data/alternate_symbol"/></strong></td>
+		    </tr>
+		    <tr>
 		        <td>Notes:</td>
 		    </tr>
 		</table>  
@@ -143,6 +147,10 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 							<td>
 								<b>@@supplied_to@@: </b>
 								<xsl:value-of select="notification_data/partner_name"/>
+								<xsl:if test="/notification_data/incoming_request/additional_borrower_information != ''">
+								    <br></br>
+								    <xsl:value-of select="/notification_data/incoming_request/additional_borrower_information"/>
+								</xsl:if>
 							</td>
 						</tr>
 				     <tr>
