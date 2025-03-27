@@ -72,7 +72,7 @@
 
                             </xsl:if >
 
-                            <xsl:if test="$deliveryTime != '' or $loanPeriod != '' or $patronCost != ''">
+                            <xsl:if test="$deliveryTime != '' or ($loanPeriod != '' and $loanPeriod != 0) or $patronCost != ''">
                                 @@borrowing_terms@@:
                                 <xsl:if test="$deliveryTime != ''">
                                     @@deliver_in@@
@@ -81,7 +81,7 @@
                                     @@hours@@
                                     <xsl:value-of select="' '" />
                                 </xsl:if>
-                                <xsl:if test="$loanPeriod != ''">
+                                <xsl:if test="$loanPeriod != '' and $loanPeriod != 0">
                                     @@keep_for@@
                                     <xsl:value-of select="$loanPeriod"/>
                                     <xsl:value-of select="' '" />
@@ -92,6 +92,8 @@
                                 @@price@@
                                     <xsl:value-of select="$patronCost"/>
                                 </xsl:if>
+                                <br></br>
+                                <br></br>
                             </xsl:if>
 
 
@@ -138,7 +140,9 @@
                         </xsl:if>
                         <xsl:if test="(notification_data/resource_sharing_request/due_date !='') and ($isEbook='true')">
                             <tr>
-                                <td>@@due_date@@:<xsl:value-of select="notification_data/resource_sharing_request/due_date"/>
+                                <td>
+                                    <strong>@@due_date@@: </strong>
+                                    <xsl:value-of select="notification_data/resource_sharing_request/due_date"/>
                                 </td>
                             </tr>
                         </xsl:if>
