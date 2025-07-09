@@ -44,7 +44,7 @@
 , is ready for  <xsl:choose>
                         <xsl:when test="notification_data/organization_unit/code = 'ASC'">
                            use.</xsl:when>
-                        <xsl:otherwise>pick up</xsl:otherwise>
+                        <xsl:otherwise>pickup.</xsl:otherwise>
                      </xsl:choose>
                   </td>
                </tr>
@@ -69,7 +69,7 @@
                            <strong>For Library Use:</strong>
                         </xsl:when>
                         <xsl:otherwise>
-                           <strong>For Library Use:</strong>
+                           <strong>For Library Pick Up:</strong>
                         </xsl:otherwise>
                      </xsl:choose>
                   </td>
