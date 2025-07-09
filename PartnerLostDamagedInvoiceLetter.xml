@@ -34,8 +34,8 @@
 
                 <br />
 
-                <xsl:call-template name="toWhomIsConcerned" /> <!-- mailReason.xsl -->
-
+                <h3>Hello,</h3>
+                
                 <div class="messageBody">
 
                     <table role='presentation'  cellspacing="0" cellpadding="5" border="0">
