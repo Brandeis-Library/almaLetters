@@ -469,15 +469,6 @@
 											</td>
 										</tr>
 									</xsl:if>
-									<xsl:if test="notification_data/general_data/current_date !=''">
-										<tr>
-											<td>
-												<strong> @@date@@: </strong>
-												<xsl:value-of select="notification_data/general_data/current_date" />
-												<!-- recordTitle.xsl -->
-											</td>
-										</tr>
-									</xsl:if>
 									<xsl:if test="notification_data/request/external_request_id !=''">
 										<tr>
 											<td>
@@ -598,11 +589,32 @@
 									<tr>
 										<td>
 											<strong>If you need materials for longer than they were originally loaned, please reach out to
-												<a href="mailto:ill@brandeis.edu">ill@brandeis.edu</a>.
+												<a href="mailto:ill@library.brandeis.edu">ill@library.brandeis.edu</a>.
 		
 											</strong>
 										</td>
 									</tr>
+								</xsl:when>
+								<xsl:when test="notification_data/query_type = 'Type_11_query_name'">
+								    <td>
+                We asked the lending library to renew this item, and unfortunately they aren't able to in this case.  
+                <xsl:if test="notification_data/request/due_date !=''">
+                    The due date remains <xsl:value-of select="notification_data/request/due_date" />.
+                    </xsl:if>
+            </td>
+								
+								</xsl:when>
+								<xsl:when test="notification_data/query_type = 'Type_12_query_name'">
+								<tr>
+								    <td>
+								        Reminder to graduating students: The interlibrary loan item item that you have borrowed will be due very soon.
+								    </td>
+							    </tr>
+							    <tr>
+								    <td>
+								        Please remember to return it before you leave campus, otherwise a lost book fee will be added to your Brandeis account.
+								    </td>
+								</tr>
 								</xsl:when>
 								<xsl:otherwise>
 									<tr>
