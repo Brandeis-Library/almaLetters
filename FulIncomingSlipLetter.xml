@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
    <xsl:variable name="counter" select="0" />
-   <xsl:include href="header.xsl" />
+      <xsl:include href="header.xsl" />
    <xsl:include href="senderReceiver.xsl" />
    <xsl:include href="mailReason.xsl" />
    <xsl:include href="footer.xsl" />
    <xsl:include href="style.xsl" />
    <xsl:include href="recordTitle.xsl" />
    <xsl:template name="id-info">
+       
       <xsl:param name="line" />
       <xsl:variable name="first" select="substring-before($line,'//')" />
       <xsl:variable name="rest" select="substring-after($line,'//')" />
@@ -30,6 +31,8 @@
       </xsl:call-template>
    </xsl:template>
    <xsl:template match="/">
+      
+      
       <html>
          <head>
             <xsl:call-template name="generalStyle" />
@@ -44,6 +47,14 @@
             <div class="messageArea">
                <div class="messageBody">
                   <table cellspacing="0" cellpadding="5" border="0">
+                       
+     <xsl:if test="starts-with(notification_data/metadata/source,'A-G')">
+                      <tr>
+                        <td>
+                           <div style="padding: 5px; border: 5px solid; border-radius:3px; text-align:center; font-size: 1.1em;"><b>This is a ComCat request</b></div>
+                        </td><br></br>
+                     </tr>
+     </xsl:if>
                      <tr>
                         <td>
                            <b>@@supplied_to@@:</b>
@@ -101,8 +112,10 @@
                         </tr>
                      </xsl:if>
                      <xsl:if test="notification_data/metadata/title != ''">
+ 
                         <tr>
                            <td>
+                             <xsl:attribute name="style"><xsl:call-template name="titleStyle" /></xsl:attribute>  
                               <b>Title:</b>
                               <xsl:value-of select="notification_data/metadata/title" />
                            </td>
@@ -218,5 +231,6 @@
             <!-- footer.xsl -->
          </body>
       </html>
+
    </xsl:template>
 </xsl:stylesheet>
