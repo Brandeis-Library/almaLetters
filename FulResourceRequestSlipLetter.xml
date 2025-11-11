@@ -42,11 +42,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 				<div class="messageBody">
                                               <xsl:call-template name="resourceRequestFontSize" /> 
 					 <table role='presentation'  cellspacing="0" cellpadding="5" border="0">
-						<xsl:if  test="notification_data/request/selected_inventory_type='ITEM'" >
-						<tr>
-							<td><strong>@@note_item_specified_request@@.</strong></td>
-						</tr>
-						</xsl:if>
+
 						<xsl:if  test="notification_data/request/manual_description != ''" >
 						<tr>
 							<td><strong>@@please_note@@: </strong>@@manual_description_note@@ - <xsl:value-of select="notification_data/request/manual_description"/></td>
