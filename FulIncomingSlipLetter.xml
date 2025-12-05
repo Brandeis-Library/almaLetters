@@ -112,8 +112,10 @@
                         </tr>
                      </xsl:if>
                      <xsl:if test="notification_data/metadata/title != ''">
+ 
                         <tr>
                            <td>
+                             <xsl:attribute name="style"><xsl:call-template name="titleStyle" /></xsl:attribute>  
                               <b>Title:</b>
                               <xsl:value-of select="notification_data/metadata/title" />
                            </td>
